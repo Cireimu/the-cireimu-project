@@ -10,19 +10,14 @@ import { renderTitleDateList } from "../helpers/blogHelpers"
 // Style Imports
 import * as blogPageStyles from "../styles/blog-page.module.scss"
 
-const allMarkdownRemarkQuery = graphql`
+const allContentfulBlogPostQuery = graphql`
   query {
-    allMarkdownRemark {
+    allContentfulBlogPost(sort: { fields: publishDate, order: DESC }) {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            date
-          }
-          fields {
-            slug
-          }
+          title
+          publishDate(formatString: "MMMM Do, YYYY")
+          slug
         }
       }
     }
@@ -31,8 +26,8 @@ const allMarkdownRemarkQuery = graphql`
 
 const BlogPage = () => {
   const {
-    allMarkdownRemark: { edges },
-  } = useStaticQuery(allMarkdownRemarkQuery)
+    allContentfulBlogPost: { edges },
+  } = useStaticQuery(allContentfulBlogPostQuery)
 
   return (
     <Layout>
