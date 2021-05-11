@@ -1,49 +1,33 @@
 const path = require("path")
-
-// Runs when nodes are being created during gatsby start up
-module.exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions
-
-  // Checks if node is a Markdown file
-  if (node.internal.type == "MarkdownRemark") {
-    // Extracts the file name without the .md extension to use as a slug
-    const slugValue = path.basename(node.fileAbsolutePath, ".md")
-
-    // Adds a filename/slug field on the node
-    createNodeField({
-      node,
-      name: "slug",
-      value: slugValue,
-    })
-  }
-}
-
+const { slash } = require("gatsby-core-utils")
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   // Creates an absolute path from the hdd root to the blog.js file
   const blogTemplate = path.resolve("./src/templates/blog.js")
 
-  const markdownRemarkQuery = await graphql(`
+  const contentfulBlogsQuery = await graphql(`
     query {
-      allMarkdownRemark {
+      allContentfulBlogPost {
         edges {
           node {
-            fields {
-              slug
-            }
+            slug
           }
         }
       }
     }
   `)
 
-  // Runs through the array of markdown files and creates a new page for each
-  markdownRemarkQuery.data.allMarkdownRemark.edges.forEach(edge => {
+  if (contentfulBlogsQuery.errors) {
+    throw contentfulBlogsQuery.errors
+  }
+
+  // Runs through the array of contentful blog posts and creates a new page for each
+  contentfulBlogsQuery.data.allContentfulBlogPost.edges.forEach(edge => {
     createPage({
-      component: blogTemplate,
-      path: `/blog/${edge.node.fields.slug}`,
+      component: slash(blogTemplate),
+      path: `/blog/${edge.node.slug}`,
       context: {
-        slug: edge.node.fields.slug,
+        slug: edge.node.slug,
       },
     })
   })
