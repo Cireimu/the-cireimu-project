@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 
 // Component imports
 import Layout from "../components/layout"
+import Head from "../components/head"
 
 // Helpers
 import { renderTitleDateList } from "../helpers/blogHelpers"
@@ -31,6 +32,7 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <Head title="Blog Directory" />
       <h1>Blog</h1>
       <ol className={blogPageStyles.posts}>{renderTitleDateList(edges)}</ol>
     </Layout>
