@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 // Component imports
 import Layout from "../components/layout"
@@ -11,9 +10,6 @@ const IndexPage = () => {
       <Head title="Home" />
       <h1>UNDER CONSTRUCTION</h1>
       <p>More to come soon...</p>
-      <p>
-        Want to connect? <Link to="/contact">Contact me.</Link>
-      </p>
     </Layout>
   )
 }
