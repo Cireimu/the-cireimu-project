@@ -35,7 +35,7 @@ const Header = () => {
             {["home", "about", "blog", "contact"].map(navItem => {
               const redirect = navItem === "home" ? "/" : `/${navItem}`
               return (
-                <li>
+                <li key={navItem}>
                   <Link
                     to={redirect}
                     className={headerStyles.navItem}
