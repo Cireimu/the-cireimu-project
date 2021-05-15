@@ -6,6 +6,9 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Layout from "../components/layout"
 import Head from "../components/head"
 
+// Styles Imports
+import * as blogTemplateStyles from "../styles/blog-template.module.scss"
+
 export const query = graphql`
   query($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
@@ -24,7 +27,6 @@ export const query = graphql`
     }
   }
 `
-
 const Blog = props => {
   const postBody = JSON.parse(props.data.contentfulBlogPost.body.raw)
   console.log(postBody)
@@ -42,13 +44,68 @@ const Blog = props => {
         )
         return <img src={url} alt={title} />
       },
+
+      paragraph: node => {
+        return (
+          <p className={blogTemplateStyles.paragraph}>
+            {node?.content[0]?.value}
+          </p>
+        )
+      },
+
+      "heading-1": node => {
+        return (
+          <h1 className={blogTemplateStyles.heading1}>
+            {node?.content[0]?.value}
+          </h1>
+        )
+      },
+      "heading-2": node => {
+        return (
+          <h2 className={blogTemplateStyles.heading1}>
+            {node?.content[0]?.value}
+          </h2>
+        )
+      },
+      "heading-3": node => {
+        return (
+          <h3 className={blogTemplateStyles.heading1}>
+            {node?.content[0]?.value}
+          </h3>
+        )
+      },
+      "heading-4": node => {
+        return (
+          <h4 className={blogTemplateStyles.heading1}>
+            {node?.content[0]?.value}
+          </h4>
+        )
+      },
+      "heading-5": node => {
+        return (
+          <h5 className={blogTemplateStyles.heading1}>
+            {node?.content[0]?.value}
+          </h5>
+        )
+      },
+      "heading-6": node => {
+        return (
+          <h6 className={blogTemplateStyles.heading1}>
+            {node?.content[0]?.value}
+          </h6>
+        )
+      },
     },
   }
   return (
     <Layout>
       <Head title={props.data.contentfulBlogPost.title} />
-      <h1>{props.data.contentfulBlogPost.title}</h1>
-      <p>Published on: {props.data.contentfulBlogPost.publishDate}</p>
+      <h1 className={blogTemplateStyles.blogTitle}>
+        {props.data.contentfulBlogPost.title}
+      </h1>
+      <p className={blogTemplateStyles.blogTimestamp}>
+        Published on: {props.data.contentfulBlogPost.publishDate}
+      </p>
       {documentToReactComponents(postBody, options)}
     </Layout>
   )
