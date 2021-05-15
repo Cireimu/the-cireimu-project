@@ -22,7 +22,7 @@ const Footer = () => {
       <p>Created by {siteMetadata.author}</p>
       <div>
         <p>
-          Want to connect? <Link to="/contact">Contact me.</Link>
+          <Link to="/contact">Let's connect!</Link>
         </p>
       </div>
     </footer>
