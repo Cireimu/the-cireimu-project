@@ -24,49 +24,31 @@ const Header = () => {
 
   return (
     <header className={headerStyles.header}>
-      <h1 className={headerStyles.title}>
-        <Link to="/">{siteMetadata.title}</Link>
-      </h1>
-      <nav>
-        <ul className={headerStyles.navList}>
-          <li>
-            <Link
-              className={headerStyles.navItem}
-              activeClassName={headerStyles.activeNavItem}
-              to="/"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={headerStyles.navItem}
-              activeClassName={headerStyles.activeNavItem}
-              to="/about"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={headerStyles.navItem}
-              activeClassName={headerStyles.activeNavItem}
-              to="/blog"
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={headerStyles.navItem}
-              activeClassName={headerStyles.activeNavItem}
-              to="/contact"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className={headerStyles.logoNavContainer}>
+        <div className={headerStyles.logo}>
+          <h1 className={headerStyles.title}>
+            <Link to="/">{siteMetadata.title}</Link>
+          </h1>
+        </div>
+        <nav>
+          <ul className={headerStyles.navList}>
+            {["home", "about", "blog", "contact"].map(navItem => {
+              const redirect = navItem === "home" ? "/" : `/${navItem}`
+              return (
+                <li>
+                  <Link
+                    to={redirect}
+                    className={headerStyles.navItem}
+                    activeClassName={headerStyles.activeNavItem}
+                  >
+                    {navItem.charAt(0).toUpperCase() + navItem.slice(1)}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
+      </div>
     </header>
   )
 }
