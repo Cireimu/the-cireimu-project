@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 
-// Component import
+// Components import
 import Layout from "../components/layout"
 import Head from "../components/head"
 
@@ -10,9 +10,10 @@ const About = () => {
     <Layout>
       <Head title="About" />
       <h1>About The Cireimu Project</h1>
-      <p>The purpose of this site is to exercise and improve my writing.</p>
       <p>
-        Want to connect? <Link to="/contact">Contact me.</Link>
+        The purpose of this site is to simply display my past and current
+        technical projects, with some non-technical blog posts that focus on
+        other things such as games and movies.
       </p>
     </Layout>
   )

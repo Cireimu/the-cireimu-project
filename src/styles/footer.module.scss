@@ -1,3 +1,12 @@
+.footer-main {
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
+  justify-content: space-around;
+  width: 100%;
+  align-content: center;
+}
+
 .created-by {
   position: initial;
   margin: 0 auto;
