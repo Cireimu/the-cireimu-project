@@ -33,7 +33,6 @@ const BlogPage = () => {
   return (
     <Layout>
       <Head title="Blog Directory" />
-      <h1>Blog</h1>
       <ol className={blogPageStyles.posts}>{renderTitleDateList(edges)}</ol>
     </Layout>
   )

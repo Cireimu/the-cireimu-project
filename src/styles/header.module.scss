@@ -1,7 +1,7 @@
 $hoverText: #c1c1eb;
 
 .header {
-  padding: 0.8rem 0 0.1rem;
+  padding: 0.5rem 0 0.1rem;
   margin: 0 auto;
   background-color: #12171c;
   position: fixed;
@@ -12,10 +12,14 @@ $hoverText: #c1c1eb;
 
 .logo-nav-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   width: 40%;
   justify-content: space-between;
+
+  @media (max-width: 950px) {
+    width: 60%;
+  }
 }
 
 .title {
@@ -23,10 +27,17 @@ $hoverText: #c1c1eb;
     color: #f5f5f5;
     font-size: 2rem;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   :hover {
     color: $hoverText;
+  }
+
+  @media (max-width: 950px) {
+    a {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -41,6 +52,11 @@ $hoverText: #c1c1eb;
   font-size: 1rem;
   margin-right: 1.3rem;
   text-decoration: none;
+  opacity: 0.75;
+
+  @media (max-width: 950px) {
+    font-size: 0.8rem;
+  }
 }
 
 .nav-item:hover {
