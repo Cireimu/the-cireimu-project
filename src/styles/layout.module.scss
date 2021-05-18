@@ -1,0 +1,22 @@
+.main-container {
+  background-color: #12171c;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 750px;
+  padding: 0.5rem 0;
+
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100vh;
+
+  @media (max-width: 950px) {
+    padding: 1rem 0;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  padding: 6rem 0;
+}

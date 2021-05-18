@@ -1,0 +1,35 @@
+$textColor: #f5f5f5;
+$hoverText: #c1c1eb;
+
+.footer-main {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  justify-content: space-around;
+  width: 100%;
+  align-content: center;
+  background: #14191e;
+  z-index: 1;
+  padding: 2rem;
+  text-align: center;
+
+  p {
+    color: $textColor;
+    font-size: 0.8rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: $textColor;
+  }
+
+  a:hover {
+    color: $hoverText;
+  }
+}
+
+.created-by {
+  position: initial;
+  margin: 0 auto;
+  margin-top: 9rem;
+}
