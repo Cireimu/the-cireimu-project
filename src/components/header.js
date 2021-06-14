@@ -32,7 +32,7 @@ const Header = () => {
         </div>
         <nav>
           <ul className={headerStyles.navList}>
-            {["home", "about", "blog", "contact"].map(navItem => {
+            {["home", "about", "blog"].map(navItem => {
               const redirect = navItem === "home" ? "/" : `/${navItem}`
               return (
                 <li key={navItem}>

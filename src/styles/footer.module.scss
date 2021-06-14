@@ -33,3 +33,12 @@ $hoverText: #c1c1eb;
   margin: 0 auto;
   margin-top: 9rem;
 }
+
+.icon {
+  color: $textColor;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+}
